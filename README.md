@@ -27,7 +27,8 @@ centerlat = 51.5219198
 coords = [circle(m, centerlon, centerlat, radius) for radius in radii]
 
 # let's initialise a point and construct a polygon
-p = Point(m(centerlon, centerlat))
+# http://mitpress.mit.edu/books/road-not-road-and-open-city-ritoque-chile
+p = Point(m(-71.530303, -32.824977))
 buffered = p.buffer(2000000)
 # let's do the same with our calculated coordinates
 pol = Polygon(coords[0])
