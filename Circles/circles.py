@@ -115,6 +115,22 @@ def circle(m, centerlon, centerlat, radius, *args, **kwargs):
         Y.append(glat2)
     X.append(X[0])
     Y.append(Y[0])
-
-    proj_x, proj_y = m(X,Y)
-    return zip(proj_x, proj_y)
+    # correct part of circle
+    correct = []
+    # erroneous part of circle
+    incorrect = []
+    final = []
+    for point in list(zip(X, Y)):
+        if point[0] < 0:
+            incorrect.append(point)
+        else:
+            correct.append(point)
+    # now convert each set to map coordinates
+    x_correct, y_correct = zip(*correct)
+    proj_x_correct, proj_y_correct = m(x_correct, y_correct)
+    final.append(zip(proj_x_correct, proj_y_correct))
+    if incorrect:
+        x_incorrect, y_incorrect = zip(*incorrect)
+        proj_x_incorrect, proj_y_incorrect = m(x_incorrect, y_incorrect)
+        final.append(zip(proj_x_incorrect, proj_y_incorrect))
+    return final
