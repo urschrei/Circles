@@ -60,7 +60,7 @@ fig.set_size_inches(12., 8.)
 plt.show()
 ```
 
-The fuchsia circle centred on Ritoque is drawn using cartesian coordinates, while the blue and transparent circles centred on London and Perth respectively have been drawn using Circles. As can be seen, these are correctly distorted, as is to be expected with the [Robinson projection](http://en.wikipedia.org/wiki/Robinson_Projection), which distorts moderately at the given [latitude](http://www.openstreetmap.org/#map=18/51.52192/-0.13585).  
+The light-blue circle centred on Ritoque is drawn using cartesian coordinates, while the fuchsia, blue and transparent circles – the latter two centred on London and Perth, respectively – have been drawn using Circles. As can be seen, these are correctly distorted, in line with the parallels and meridians drawn on the [Robinson projection](http://en.wikipedia.org/wiki/Robinson_Projection), which distorts moderately at the latitudes in [question](http://www.openstreetmap.org/#map=18/51.52192/-0.13585).  
 
 The IPython Notebook used to generate the graphic can be viewed [here](http://nbviewer.ipython.org/github/urschrei/Circles/blob/master/circles.ipynb).
 
