@@ -65,3 +65,9 @@ The fuchsia circle centred on Ritoque is drawn using cartesian coordinates, whil
 
 # TODO
 - [ ] Wrapping the circle correctly across map bounds is a very tricky problem. I gather [Leaflet](http://leafletjs.com/reference.html#circle) does this well as of 0.8
+
+## Citation
+
+This work may be cited using the following DOI:  
+
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.10084.png)](https://zenodo.org/record/10084)
