@@ -8,7 +8,7 @@ Simply drawing a circle on that plane using cartesian coordinates will result in
 
 Thomas Lecoq has [helpfully translated](http://www.geophysique.be/2011/02/19/matplotlib-basemap-tutorial-08-shooting-great-circles/) some [JS code written by Ed Williams](http://williams.best.vwh.net/gccalc.htm) into Python, in order to allow the correct calculation of great-circle distances for the [WGS84 ellipsoid](http://en.wikipedia.org/wiki/World_Geodetic_System). I've reproduced it here with some minor alterations, in the form of Circles, a small convenience library. It's designed to be used with the [Basemap](http://matplotlib.org/basemap/) extension to matplotlib, and it requires the [Numpy](http://www.numpy.org) library. Install it using pip: `pip install circles`
 
-`Circles` exposes a single method, `circle()`. Pass it your Basemap instance, latitude and longitude of the point you'd like as the centre of your circle, and the radius. It will return a list of lon, lat tuples *in map projection coordinates*, which can be passed to your Basemap instance for plotting, or converted into Polygons using [Shapely](http://toblerity.org/shapely/manual.html), and then plotted using [Descartes](https://bitbucket.org/sgillies/descartes/).
+`Circles` exposes a single method, `circle()`. Pass it your Basemap instance, longitude and latitude of the point you'd like as the centre of your circle, and the radius. It will return a list of lon, lat tuples *in map projection coordinates*, which can be passed to your Basemap instance for plotting, or converted into Polygons using [Shapely](http://toblerity.org/shapely/manual.html), and then plotted using [Descartes](https://bitbucket.org/sgillies/descartes/).
 
 An example:  
 
@@ -59,4 +59,8 @@ fig.set_size_inches(12., 8.)
 plt.show()
 ```
 
-The orange circle is drawn using cartesian coordinates, and the teal circle is drawn using Circles. As can be seen, it is correctly distorted, as is to be expected with the [Robinson projection](http://en.wikipedia.org/wiki/Robinson_Projection), which distorts moderately at the [latitude](https://www.google.com/maps/dir/51.5219198,-0.135875/51°31'19.0%22N+0°08'10.0%22E/@51.5217378,-0.1327161,14z/data=!4m13!1m4!3m3!1s0x0:0x0!2zNTHCsDMxJzE5LjAiTiAwwrAwOCcxMC4wIkU!3b1!4m7!1m0!1m5!1m1!1s0x0:0x0!2m2!1d0.136111!2d51.521944) upon which it's centered.
+The orange circle is drawn using cartesian coordinates, and the teal circle is drawn using Circles. As can be seen, the teal-coloured circle is correctly distorted, as is to be expected with the [Robinson projection](http://en.wikipedia.org/wiki/Robinson_Projection), which distorts moderately at the [latitude](https://www.google.com/maps/dir/51.5219198,-0.135875/51°31'19.0%22N+0°08'10.0%22E/@51.5217378,-0.1327161,14z/data=!4m13!1m4!3m3!1s0x0:0x0!2zNTHCsDMxJzE5LjAiTiAwwrAwOCcxMC4wIkU!3b1!4m7!1m0!1m5!1m1!1s0x0:0x0!2m2!1d0.136111!2d51.521944) upon which it's centered.
+
+
+# TODO
+- [ ] Wrapping the circle correctly across map bounds is a very tricky problem. I gather [Leaflet](http://leafletjs.com/reference.html#circle) does this well as of 0.8
