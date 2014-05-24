@@ -36,15 +36,15 @@ def _gccalc(lon, lat, azimuth, maxdist=None):
     """
     glat1 = lat * np.pi / 180.
     glon1 = lon * np.pi / 180.
-    s = maxdist / 1.852
+    s = maxdist / 1.852243
     faz = azimuth * np.pi / 180.
  
     EPS = 0.00000000005
     if ((np.abs(np.cos(glat1)) < EPS) and not (np.abs(np.sin(faz)) < EPS)):
         raise CourseException("Only North-South courses are meaningful")
 
-    a = 6378.13 / 1.852
-    f= 1 / 298.257223563
+    a = 6378.137 / 1.852243
+    f = 1 / 298.257223563
     r = 1 - f
     tu = r * np.tan(glat1)
     sf = np.sin(faz)
