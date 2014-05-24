@@ -59,7 +59,7 @@ fig.set_size_inches(12., 8.)
 plt.show()
 ```
 
-The orange circle is drawn using cartesian coordinates, and the teal circle is drawn using Circles. As can be seen, the teal-coloured circle is correctly distorted, as is to be expected with the [Robinson projection](http://en.wikipedia.org/wiki/Robinson_Projection), which distorts moderately at the [latitude](https://www.google.com/maps/dir/51.5219198,-0.135875/51°31'19.0%22N+0°08'10.0%22E/@51.5217378,-0.1327161,14z/data=!4m13!1m4!3m3!1s0x0:0x0!2zNTHCsDMxJzE5LjAiTiAwwrAwOCcxMC4wIkU!3b1!4m7!1m0!1m5!1m1!1s0x0:0x0!2m2!1d0.136111!2d51.521944) upon which it's centered.
+The fuchsia circle centred on Ritoque is drawn using cartesian coordinates, while the blue and transparent circles centred on London and Perth respectively have been drawn using Circles. As can be seen, these are correctly distorted, as is to be expected with the [Robinson projection](http://en.wikipedia.org/wiki/Robinson_Projection), which distorts moderately at the given [latitude](http://www.openstreetmap.org/#map=18/51.52192/-0.13585).
 
 
 # TODO
