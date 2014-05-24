@@ -2,7 +2,8 @@
 
 ![Circles](circles.png "Winkel III isn't available, and I don't want to use Kavrayskiy VII, because I don't want to be thought of as an obscurantist.")
 
-A map projection is a systematic transformation of the latitudes and longitudes of locations on the surface of a sphere or an ellipsoid into locations on a plane. ([Snyder, J. P., 1989](http://pubs.usgs.gov/pp/1453/report.pdf))
+> A map projection is a systematic transformation of the latitudes and longitudes of locations on the surface of a sphere or an ellipsoid into locations on a plane.  
+— ([Snyder, J. P., 1989](http://pubs.usgs.gov/pp/1453/report.pdf))
 
 Simply drawing a circle on that plane using cartesian coordinates will result in something that is…[wrong](http://www.economist.com/node/1788311).
 
