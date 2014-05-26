@@ -11,9 +11,11 @@ Thomas Lecoq has [helpfully translated](http://www.geophysique.be/2011/02/19/mat
 
 `Circles` exposes a single method, `circle()`. Pass it your Basemap instance, longitude and latitude of the point you'd like as the centre of your circle, and the radius. It will return a list of lon, lat tuples *in map projection coordinates*, which can be passed to your Basemap instance for plotting, or converted into Polygons using [Shapely](http://toblerity.org/shapely/manual.html), and then plotted using [Descartes](https://bitbucket.org/sgillies/descartes/).
 
-An example:  
+A simple example:  
 
 ```Python
+# the shaded circle has the wrong shape
+
 from Circles.circles import circle
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
@@ -24,38 +26,40 @@ import numpy as np
 # use the Robinson projection - it'll distort nicely
 m = Basemap(resolution='l', projection='robin', lon_0=0)
 
-radii = [2000]
+radius = 2000
 centerlon = 0.135875
 centerlat = 51.5219198
-coords = [circle(m, centerlon, centerlat, radius) for radius in radii]
 
-# let's initialise a point and construct a polygon
-# http://mitpress.mit.edu/books/road-not-road-and-open-city-ritoque-chile
-p = Point(m(-71.530303, -32.824977))
-buffered = p.buffer(2000000)
-# let's do the same with our calculated coordinates
-pol = Polygon(coords[0])
+# initialise a point and construct a buffered polygon
+p = Point(m(centerlon, centerlat))
+buffered = p.buffer(radius * 1000)
 
-# let's plot everything
+# same radius, but with calculated coordinates
+casa = circle(m, centerlon, centerlat, radius)
+pol = Polygon(casa)
+
+# initialise a new plot and axes
 plt.clf()
 fig = plt.figure()
 ax = fig.add_subplot(111, axisbg='w', frame_on=False)
 
-patch1 = PolygonPatch(buffered, fc='#FFCC66', ec='#ffffff', alpha=.75, zorder=2)
-patch2 = PolygonPatch(pol, fc='#00BABA', ec='#ffffff', alpha=.75, zorder=2)
+# draw map features
+m.drawmapboundary(fill_color='#dfedff', linewidth=0.25, zorder=0, ax=ax)
+m.drawcountries(linewidth=.25, color='#000000', zorder=2, ax=ax)
+m.drawcoastlines(linewidth=1., zorder=1, ax=ax)
+m.fillcontinents(color='#555555', lake_color='#C4C4C4',zorder=1, ax=ax)
+m.drawparallels(np.arange(-90., 120., 30.), alpha=0.5, lw=0.25, zorder=1, ax=ax)
+m.drawmeridians(np.arange(0., 360., 60.), alpha=0.5, lw=0.25, zorder=1, ax=ax)
 
-m.drawcountries()
-m.drawcoastlines()
-m.fillcontinents(color='#C4C4C4', lake_color='white')
-m.drawparallels(np.arange(-90., 120., 30.))
-m.drawmeridians(np.arange(0., 360., 60.))
-m.drawmapboundary(fill_color='white')
-
-ax.add_patch(patch1)
-ax.add_patch(patch2)
+# draw circles
+incorrect = PolygonPatch(buffered, fc='none', ec='#333333', lw=0, ls='dotted', hatch='....', zorder=1)
+correct = PolygonPatch(pol, fc='#00BABA', ec='#ffffff', alpha=.5, zorder=3)
+ax.add_patch(incorrect)
+ax.add_patch(correct)
 
 # with apologies to the Sugababes
 plt.title("Round round baby, round round")
+plt.tight_layout()
 fig.set_size_inches(12., 8.)
 plt.show()
 ```
