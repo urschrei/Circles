@@ -1,6 +1,6 @@
 # Circles
 
-![Circles](circles.png "Winkel III isn't available, and I don't want to use Kavrayskiy VII, because I don't want to be thought of as an obscurantist.")
+[![Circles](circles_gh.png)](http://nbviewer.ipython.org/github/urschrei/Circles/blob/master/circles.ipynb "Winkel III isn't available, and I don't want to use Kavrayskiy VII, because I don't want to be thought of as an obscurantist.")
 
 > A map projection is a systematic transformation of the latitudes and longitudes of locations on the surface of a sphere or an ellipsoid into locations on a plane.  
 — ([Snyder, J. P., 1989](http://pubs.usgs.gov/pp/1453/report.pdf))
